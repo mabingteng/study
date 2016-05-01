@@ -23,7 +23,7 @@ public class FeatureRef {
 		{
 		    long start = System.currentTimeMillis();
 		    for (int i=0; i<1000000; i++)
-		    {
+		    {   
 		        Father a = new Father();
 		        a.f2();;
 		    }
