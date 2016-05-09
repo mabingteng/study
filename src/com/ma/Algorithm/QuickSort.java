@@ -1,20 +1,20 @@
 package com.ma.Algorithm;
 
 public class QuickSort {
-	static int array[] = {3,1,4,5,8,7,9,0,11,23,14,15,78,10};
+	static int array[] = {3,1,4,5,8,7,9,10,10,23,14,15,78,10};
 	public  static void findpoint(int [] a ,int left , int right){
 		if(left < right){
 		int key = a[left];
 		int low = left;
 		int high = right;
 		while(low < high){
-			while(low < high && key < a[high]){
+			while(low < high && key <= a[high]){
 				high --;
 			}
 			
 			a[low] = a[high];
 			
-			while(low < high && key > a[low]){
+			while(low < high && key >= a[low]){
 				low ++;
 			}
 			a[high] = a[low];	
