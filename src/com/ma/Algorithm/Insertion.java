@@ -5,16 +5,24 @@ public class Insertion extends SortHelper{
 	
 	@Override
 	public void sort(Comparable[] a) {
-		for(int i = 1;i<a.length ; i++){
-			for(int j=i ; j>0&&less(a[j],a[j-1]); j--)
-				exch(a,j,j-1);
-		}
+		int size = a.length;
+		for(int i = 1; i < size; i++)
+		    {
+		        int j = i;
+		        Comparable t = a[j];
+		        for(; j > 0 && less(t,a[j-1]); j--)
+		            a[j] = a[j - 1];
+		        
+		        a[j] = t;
+		        show(a);
+		    }
 	}
 	
 	public static void  main(String args[]){
-		Integer[] s = {1,3,4,5,7,66,5,4,33,2,11,3,4444,2,44,5,6,75,32};
+		Integer[] s = {5,4,3,2,1,6,8};
+		show(s);
 		//new Insertion().sort(s);
-		insertion(s);
+		insertion2(s);
 		show(s);
 	}
 

@@ -30,10 +30,13 @@ public abstract class SortHelper {
 	
 	}
 	
-	//1，对于长度为N的数组，选择排序需要N*N/2次比较和N次交换
+	/**
+	 * 对于长度为N的数组，选择排序需要N*N/2次比较和N次交换
+	 * @param a
+	 */
 	public static void selectSort(Comparable[] a) {
 		//System.out.println("============start select sort ==================");
-		System.out.println("对于长度为N的数组，选择排序需要N*N/2次比较和N次交换");
+		//System.out.println("对于长度为N的数组，选择排序需要N*N/2次比较和N次交换");
 		for(int i = 0 ; i < a.length ; i++){
 			int min = i ;
 			for(int j = i ; j< a.length ; j++){
@@ -43,11 +46,26 @@ public abstract class SortHelper {
 			}
 		//System.out.println("=============end select sort =======================");
 	}
+	/**
+	 * 长度为N且不重复的数组，最多比较N*N/2次，交换 N*N/2次
+	 * @param a
+	 */
 	public static void insertion(Comparable[] a){
 		int N = a.length;
 		for(int i = 1 ; i < N ; i ++){
-			for(int j = i ; j>0&&less(a[j],a[j-1]) ;  j-- )
+			for(int j = i ; j >0 &&less(a[j],a[j-1]);j--){
 				exch(a,j,j-1);
+			}
+		}
+	}
+	public static void insertion2(Comparable[] a){
+		int N =a.length;
+		for(int i = 1; i < N ; i++){
+			Comparable t = a[i];
+			int j = i;
+			for( ; j > 0 && less(t ,a[j-1]); j --)
+				a[j] = a[j-1];
+			a[j] = t;
 		}
 	}
 }
