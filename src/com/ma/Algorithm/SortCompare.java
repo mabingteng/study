@@ -12,6 +12,9 @@ public class SortCompare {
 			SortHelper.insertion(a);
 		if(alg.equals("insert2"))
 			SortHelper.insertion2(a);
+		if(alg.equals("shell")){
+			SortHelper.shell(a);
+		}
 		return timer.elapsedTime();
 	}
 	public static double timeRandomInput(String alg , int N , int T){
@@ -25,9 +28,10 @@ public class SortCompare {
 		return total;
 	}
 	public static void main(String[] args) {
-		String alg1= "insert2";
+		//插入排序比选择排序快些，他们的比是一个较小的常数
+		String alg1= "shell";
 		String alg2 = "insert";
-		int N = 1000;
+		int N = 100000;
 		int T =100;
 		double t1 = timeRandomInput(alg1, N, T);
 		double t2 = timeRandomInput(alg2, N, T);

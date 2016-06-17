@@ -58,6 +58,10 @@ public abstract class SortHelper {
 			}
 		}
 	}
+	/**
+	 * 较常用的插入排序
+	 * @param a
+	 */
 	public static void insertion2(Comparable[] a){
 		int N =a.length;
 		for(int i = 1; i < N ; i++){
@@ -67,5 +71,68 @@ public abstract class SortHelper {
 				a[j] = a[j-1];
 			a[j] = t;
 		}
+	}
+	/**
+	 * 希尔排序:使数组中任意间隔为h的元素是有序的，如果h很大我们可以将元素移到很远的地方，为实现更小的h有序创造方便
+	 * 希尔排序更高效（相比选择排序/插入排序）的原因是它权衡了数组的规模和有序性。
+	 * @param a
+	 */
+	public static void shell(Comparable[] a){
+		int N =a.length;
+		int h =1;
+		while(h<N/3)
+			h=3*h+1;
+		while(h>=1){
+			for(int i = h;i < N ; i++){
+				for(int j=i;j>=h && less(a[j],a[j-h]);j-=h){
+					exch(a,j,j-h);
+				}
+			}
+			h = h/3;
+		}
+	}
+	
+	/**
+	 * 自上而下的归并排序。所需时间和NlgN成正比，适合数据规模庞大的情况
+	 * 主要缺点：辅助数组所需的额外空间和N的大小成正比	 
+	 */
+	public static void merge(Comparable[] a){
+		merge(a, 0, a.length-1);
+	}
+	private static void merge(Comparable[]a,int lo ,int hi){
+	    	if(lo>=hi)
+	    		return ;
+	    	int mid = lo+(hi-lo)/2;
+	    	merge(a,lo,mid);
+	    	merge(a,mid+1,hi);
+	    	mergeHelper(a, lo, mid, hi);
+	}
+	public static void mergeBU(Comparable[]a){
+		int N = a.length;
+		for(int sz=1; sz < N ;sz=sz+sz){
+			for(int lo = 0;lo < N-sz ; lo += sz+sz){
+				mergeHelper(a, lo, lo+sz-1, Math.min(lo+sz+sz-1, N-1));
+				show(a);
+			}
+		}
+	}
+	public static void mergeHelper(Comparable[]a,int lo,int mid,int hi){
+		int sz1 = lo;
+		int sz2 = mid+1;
+		Comparable[] b = new Comparable[a.length];
+		for(int i=lo;i<=hi;i++){
+			b[i] = a[i];
+		}
+		for(int s = lo; s<=hi;s++){
+			if(sz1>mid)
+				a[s] = b[sz2++];
+			else if(sz2>hi)
+				a[s] = b[sz1++];
+			else if(less(b[sz1],b[sz2]))
+				a[s] = b[sz1++];
+			else a[s] = b[sz2++];
+			//show(a);
+
+		}    
 	}
 }

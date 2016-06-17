@@ -1,4 +1,4 @@
-package com.ma.collections;
+package com.ma.collections.list;
 
 public class TestArrayList {
 

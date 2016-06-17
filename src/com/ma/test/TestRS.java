@@ -39,7 +39,7 @@ public class TestRS extends T1{
 			System.out.println(a2[i]);
 		}*/
 		
-		HashMap<Integer,String> map = new HashMap<Integer,String>();
+		/*HashMap<Integer,String> map = new HashMap<Integer,String>();
 		System.out.println("×óÒÆÒ»Î»³ËÒÔ2:");
 		System.out.println(1<<30);
 		
@@ -58,6 +58,6 @@ public class TestRS extends T1{
 		}
 		System.gc();
 		
-		TestRS[] a = new TestRS [10000]; 
+		TestRS[] a = new TestRS [10000]; */
 	}
 }

@@ -1,10 +1,10 @@
-package com.ma.collections;
+package com.ma.collections.map;
 import java.util.*;
 import java.util.Map.Entry;
 public class TestHashMap {
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) {
-        HashMap h2 = new HashMap();
+      /*  HashMap h2 = new HashMap();
         for (int i = 0; i < 10; i++) {
             h2.put(new Element(i), new Figureout());
         }
@@ -14,7 +14,7 @@ public class TestHashMap {
             System.out.println("Not found");
         }
        
-        
+       
         System.out.println(h2);
         Element tes2 = new Element(3);
         System.out.println(test.hashCode());
@@ -57,12 +57,49 @@ public class TestHashMap {
         }
         for(ListIterator li = list.listIterator(); li.hasNext();){
         	li.next();
-        	li.previous();
+        	//li.previous();
         	System.out.println("game -over--");
         }
-        
+        */
         //linked list
+    	
+        HashMap<String ,String> map = new HashMap<String, String>();
+        for(int i =0 ; i < 10 ; i++){
+        	map.put("key"+i, "value"+i);
+        }
+        Iterator<Entry<String, String>> it = map.entrySet().iterator();
+        while(it.hasNext()){
+        	it.next();
+        	it.remove();
+        }
+        System.out.println(map);
+        String h1 = new String("hello");
+        String h2 = new String("holle");
+        //字符串相同的两个String对象使用一块内存
+        //System.out.println(h1.equals(h2));
         
+        //testPriority(1000000000);
+    }
+    
+    public static void testPriority(int i){
+         long start = System.currentTimeMillis();
+         int n=i;
+         while(i>=0){
+         	i--;
+         	//int a = i & (8-1);
+         	int a =  (i<<5)-i;
+         }
+         long used = System.currentTimeMillis()-start;
+         System.out.println(used +" ms");
+         long start2 = System.currentTimeMillis();
+         
+         while(n>=0){
+         	n--;
+         	//int a = n % (8);
+         	int a = 3 * i;
+         }
+         long used2 = System.currentTimeMillis()-start2;
+         System.out.println(used2 +" ms");
     }
 }
     
