@@ -24,7 +24,7 @@ public class ForkJoinTest extends RecursiveAction {
 	public ForkJoinTest(int[] array) {
 		this.array =array;
 		this.lo =0 ;
-		this.hi = array.length-1;
+		this.hi = array.length-1; 
 	}
 	public ForkJoinTest(int[] array ,int lo , int hi){
 		this.array =array;
