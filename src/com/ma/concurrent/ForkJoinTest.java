@@ -41,8 +41,8 @@ public class ForkJoinTest extends RecursiveAction {
 			ForkJoinTest f2 = new ForkJoinTest(array, pivot+1, hi);
 			f1.fork();
 			f2.fork();
-			f1.join();
-			f2.join();
+			//f1.join();
+			//f2.join();
 			
 		}
 		
@@ -50,7 +50,7 @@ public class ForkJoinTest extends RecursiveAction {
 	private int partition(int[] a , int lo, int hi){
 		int key = a[hi];
 		int i = lo -1;
-		for(int j = lo; j<=hi; j++){
+		for(int j = lo; j< hi; j++){
 			if(a[j]<=key){
 				i++;
 				swap(a,i,j);
