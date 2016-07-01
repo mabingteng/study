@@ -1,6 +1,10 @@
 package com.ma.collections.map;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map.Entry;
+import java.util.Random;
+import java.util.TreeMap;
 public class TestHashMap {
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) {
@@ -79,6 +83,10 @@ public class TestHashMap {
         //System.out.println(h1.equals(h2));
         
         //testPriority(1000000000);
+        TreeMap<String,String> tmap = new TreeMap<String, String>();
+        tmap.put("1", "1");
+        tmap.put("1", "2");
+        System.out.println(tmap);
     }
     
     public static void testPriority(int i){

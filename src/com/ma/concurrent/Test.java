@@ -1,7 +1,5 @@
 package com.ma.concurrent;
 
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Test {
@@ -11,7 +9,8 @@ public class Test {
 			int[] b = a;
 			b[0] = 100;
 			ConcurrentHashMap<String, String> cmap = new ConcurrentHashMap<String, String>();
-			cmap.put("s", " ");
+			// cmap.put("s", null);
+			
 	}
 }
 
