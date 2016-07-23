@@ -8,7 +8,6 @@ package com.ma.Algorithm;
  *
  */
 public class Merge extends SortHelper {
-
 	@SuppressWarnings("rawtypes")
 	private static Comparable[] aux;
 	/* £¨·Ç Javadoc£©

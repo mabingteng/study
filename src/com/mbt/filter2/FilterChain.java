@@ -21,7 +21,6 @@ public class FilterChain implements Filter {
 	}
 	@Override
 	public void dofilter(Request req, Response res,FilterChain fc) {
-		// TODO Auto-generated method stub
 		size++;
 		if(size==filters.size())
 			return ;
