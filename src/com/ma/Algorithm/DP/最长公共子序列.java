@@ -4,15 +4,16 @@ import java.util.Arrays;
 /**
  *  公共子序列
  */
-public class DFGGZXL {
+public class 最长公共子序列 {
 	
 	public static void main(String[] args) {
 		String s1 = "ttrmeoqrheqojqaxiobgmvmievtbbi";
 		String s2 = "cxgzqczkjxjfyyzuhtgxrgfqojoogcxgluqzveuznczntawtbfov";
 		System.out.println(getLCS(s1,s1.length(),s2,s2.length()));
-		//System.out.println(getLength(s2, s1));
+		System.out.println(getLength(s2,30, s1,58));
 	}
-	public static int getLength(String s1, String s2){
+	
+	public static int getLength(String s1, int n, String s2, int m){
 		int rst = 0;
 		if(s1==null||s2==null||s1.length()==0||s2.length()==0)
 			return rst;
@@ -46,9 +47,9 @@ public class DFGGZXL {
 			}
 			
 		}
-		//Arrays.sort(d);
-		System.out.println(Arrays.toString(d));
-		System.out.println(Arrays.toString(index));
+		Arrays.sort(d);
+		//System.out.println(Arrays.toString(index));
+		//System.out.println(Arrays.toString(d));
 		rst = d[d.length-1];
 		return rst;
 	}
