@@ -21,6 +21,7 @@ package com.ma.leetcode;
  */
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 
@@ -48,20 +49,19 @@ public class LongestSubstringWithoutRepeatingCharacters {
    * If the character is already in the hashmap, then move the left pointer to the right of the
    * same character last found. Note that the two pointers can only move forward.
    */
-  public int lengthOfLongestSubstring1(String s) {
-    if (s.length() == 0) {
-      return 0;
+  public int lengthOfLongestSubstring2(String str) {
+    int result = 0;
+    if (str == null) {
+      return result;
     }
-    HashMap<Character, Integer> map = new HashMap<>();
-    int max = 0;
-    for (int i = 0, j = 0; i < s.length(); ++i) {
-      if (map.containsKey(s.charAt(i))) {
-        //·ÀÖ¹»ØÍË
-        j = Math.max(j, map.get(s.charAt(i)) + 1);
+    Map<Character, Integer> dict = new HashMap<>();
+    for (int left = 0, right = 0; right < str.length(); right++) {
+      if (dict.containsKey(str.charAt(right))) {
+        left = Math.max(left, dict.get(str.charAt(right)) + 1);
       }
-      map.put(s.charAt(i), i);
-      max = Math.max(max, i - j + 1);
+      dict.put(str.charAt(right), right);
+      result = Math.max(result, right - left + 1);
     }
-    return max;
+    return result;
   }
 }
