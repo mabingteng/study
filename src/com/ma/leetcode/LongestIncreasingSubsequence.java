@@ -42,7 +42,7 @@ public class LongestIncreasingSubsequence {
       int left = 0, right = dpIndex;
       while (left < right) {
         int tempIndex = (left + right) / 2;
-        if (nums[index] > dp[dpIndex]) {
+        if (nums[index] > dp[tempIndex]) {
           left = tempIndex + 1;
         } else {
           right = tempIndex;
