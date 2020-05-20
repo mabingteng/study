@@ -1,13 +1,9 @@
 package com.ma.leetcode;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 30. 串联所有单词的子串
@@ -40,21 +36,32 @@ public class SubstringWithConcatenationOfAllWords {
 
   public List<Integer> findSubstring(String s, String[] words) {
     List<Integer> result = new ArrayList<>();
-    if(s == null || s.length() == 0 || words == null || words.length == 0 ) {
+    if (s == null || s.length() == 0 || words == null || words.length == 0) {
       return result;
     }
     String word = words[0];
     int wordLength = word.length();
     Map<String, Integer> dict = new HashMap<>();
     for (int i = words.length - 1; i >= 0; i--) {
-     dict.put(words[i], dict.getOrDefault(words[i], 0) + 1);
+      dict.put(words[i], dict.getOrDefault(words[i], 0) + 1);
     }
     for (int index = 0; index < wordLength; index++) {
       int left = index, right = index, count = 0;
       Map<String, Integer> tempDict = new HashMap<>();
-      while(right + wordLength < s.length()) {
+      while (right + wordLength <= s.length()) {
         String tempWord = s.substring(right, right + wordLength);
-        tempDict.put(tempWord, tempDict.getOrDefault(tempWord) + 1)
+        tempDict.put(tempWord, tempDict.getOrDefault(tempWord, 0) + 1);
+        count++;
+        right = right + wordLength;
+        while (tempDict.get(tempWord) > dict.getOrDefault(tempWord, 0)) {
+          count--;
+          String leftStr = s.substring(left, left + wordLength);
+          tempDict.put(leftStr, tempDict.get(leftStr) - 1);
+          left = left + wordLength;
+        }
+        if (count == words.length) {
+          result.add(left);
+        }
       }
     }
     return result;
